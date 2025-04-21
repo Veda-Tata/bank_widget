@@ -1,15 +1,44 @@
+
 # Python
 __pycache__/
 *.py[cod]
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 .python-venv/
+venv/
 
 # IDE
 .idea/
 .vscode/
+*.swp
+*.swo
 
-# Poetry
-poetry.lock
-*.egg-info/
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# Тестовые данные
-/test_data/
+# Test
+.coverage
+htmlcov/
+.pytest_cache/
