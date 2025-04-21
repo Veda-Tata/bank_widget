@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.python-venv/
+
+# IDE
+.idea/
+.vscode/
+
+# Poetry
+poetry.lock
+*.egg-info/
+
+# Тестовые данные
+/test_data/
