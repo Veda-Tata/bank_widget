@@ -1,22 +1,22 @@
+from datetime import datetime
 from typing import List, Dict
 
 
-def filter_by_state(operations: List[Dict], state: str = "EXECUTED") -> List[Dict]:
+def sort_operations_by_date(operations: List[Dict], reverse: bool = True) -> List[Dict]:
     """
-    Фильтрует список банковских операций по указанному статусу.
+    Сортирует список операций по дате.
 
     Args:
-        operations: Список словарей, где каждый словарь содержит данные об операции.
-        state: Статус операции для фильтрации. По умолчанию 'EXECUTED'.
+        operations: Список операций (словарей)
+        reverse: Если True - сортировка по убыванию (новые сначала),
+                 если False - по возрастанию (старые сначала)
 
     Returns:
-        Список операций, отфильтрованных по статусу.
-
-    Examples:
-       Возвращает операции с state="EXECUTED"
+        Отсортированный список операций
     """
-    filtered_operations = []
-    for operation in operations:
-        if operation.get("state") == state:
-            filtered_operations.append(operation)
-    return filtered_operations
+
+    def get_operation_date(op: Dict) -> datetime:
+        # Предполагаем, что дата хранится в поле 'date' в формате ISO
+        return datetime.fromisoformat(op['date'])
+
+    return sorted(operations, key=get_operation_date, reverse=reverse)
