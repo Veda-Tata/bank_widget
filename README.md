@@ -23,3 +23,15 @@ from src.masks import masks
 masked_card = masks.get_mask_card_number("7000792289606361")  # "7000 79** **** 6361"
 masked_account = masks.get_mask_account("73654108430135874305")  # "**4305"
 ```
+## Тестирование
+
+- Покрытие кода: >80%
+- Запуск тестов:
+  ```bash
+  pytest --cov=src --cov-report=html
+  ```
+- Отчёт: Откройте `htmlcov/index.html` в браузере
+
+**Зависимости для тестов:**
+- pytest
+- pytest-cov
