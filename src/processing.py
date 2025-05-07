@@ -1,5 +1,5 @@
-from typing import List, Dict, Optional
 from datetime import datetime
+from typing import Dict, List
 
 
 def filter_by_state(operations: List[Dict], state: str = "EXECUTED") -> List[Dict]:
@@ -47,10 +47,6 @@ def sort_by_date(operations: List[Dict], reverse: bool = True) -> List[Dict]:
         [{'date': '2023-02-01T15:30:00.000000'}, {'date': '2023-01-01T12:00:00.000000'}]
     """
     try:
-        return sorted(
-            operations,
-            key=lambda x: datetime.fromisoformat(x["date"]),
-            reverse=reverse
-        )
+        return sorted(operations, key=lambda x: datetime.fromisoformat(x["date"]), reverse=reverse)
     except KeyError as e:
         raise KeyError("Все операции должны содержать ключ 'date'") from e
