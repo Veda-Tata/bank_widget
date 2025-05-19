@@ -23,3 +23,22 @@ from src.masks import masks
 masked_card = masks.get_mask_card_number("7000792289606361")  # "7000 79** **** 6361"
 masked_account = masks.get_mask_account("73654108430135874305")  # "**4305"
 ```
+
+## Модуль decorators
+
+### Декоратор `log`
+
+Логирует вызовы функций и их результаты.
+
+**Параметры:**
+- `filename` (str, optional): Имя файла для записи логов. Если не указан, вывод в консоль.
+
+**Примеры использования:**
+```python
+@log(filename="operations.log")
+def add(a, b):
+    return a + b
+
+@log()
+def greet(name):
+    return f"Hello, {name}"
