@@ -1,6 +1,6 @@
-import os
-from src.decorators import log
 import pytest
+
+from src.decorators import log
 
 
 def test_log_to_file(tmp_path):
