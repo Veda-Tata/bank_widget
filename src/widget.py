@@ -1,7 +1,5 @@
 from datetime import datetime
-
-from .masks import get_mask_account, get_mask_card_number
-
+from src.masks import mask_account, mask_card_number  # Изменен импорт на новые имена функций
 
 def mask_account_card(data: str) -> str:
     """
@@ -14,11 +12,10 @@ def mask_account_card(data: str) -> str:
         Строка с замаскированным номером (пример: "Visa Platinum 7000 79** **** 6361")
     """
     if "Счет" in data:
-        return f"Счет {get_mask_account(data.split()[-1])}"
+        return f"Счет {mask_account(data.split()[-1])}"  # Использование mask_account вместо get_mask_account
     else:
         *card_type, number = data.split()
-        return f"{' '.join(card_type)} {get_mask_card_number(number)}"
-
+        return f"{' '.join(card_type)} {mask_card_number(number)}"  # Использование mask_card_number вместо get_mask_card_number
 
 def get_date(date_str: str) -> str:
     """
