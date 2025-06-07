@@ -42,3 +42,16 @@ def add(a, b):
 @log()
 def greet(name):
     return f"Hello, {name}"
+
+## Новые возможности. Поддержка CSV и Excel файлов
+
+Теперь проект поддерживает чтение финансовых транзакций из:
+- CSV файлов (функция `read_csv_transactions()`)
+- Excel файлов (функция `read_excel_transactions()`)
+
+### Использование:
+```python
+from src.file_reader import read_csv_transactions, read_excel_transactions
+
+csv_data = read_csv_transactions('transactions.csv')
+excel_data = read_excel_transactions('transactions.xlsx')
