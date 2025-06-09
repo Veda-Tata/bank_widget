@@ -1,5 +1,7 @@
 from datetime import datetime
+
 from src.masks import mask_account, mask_card_number  # Изменен импорт на новые имена функций
+
 
 def mask_account_card(data: str) -> str:
     """
@@ -16,6 +18,7 @@ def mask_account_card(data: str) -> str:
     else:
         *card_type, number = data.split()
         return f"{' '.join(card_type)} {mask_card_number(number)}"  # Использование mask_card_number вместо get_mask_card_number
+
 
 def get_date(date_str: str) -> str:
     """

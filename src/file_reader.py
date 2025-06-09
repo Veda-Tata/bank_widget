@@ -1,5 +1,6 @@
 import csv
-from typing import List, Dict
+from typing import Dict, List
+
 import pandas as pd
 
 
@@ -14,7 +15,7 @@ def read_csv_transactions(file_path: str) -> List[Dict]:
         List[Dict]: List of transactions where each transaction is represented as dictionary
     """
     transactions = []
-    with open(file_path, mode='r', encoding='utf-8') as file:
+    with open(file_path, mode="r", encoding="utf-8") as file:
         reader = csv.DictReader(file)
         for row in reader:
             transactions.append(dict(row))
@@ -31,5 +32,5 @@ def read_excel_transactions(file_path: str) -> List[Dict]:
     Returns:
         List[Dict]: List of transactions where each transaction is represented as dictionary
     """
-    df = pd.read_excel(file_path, engine='openpyxl')
-    return df.to_dict('records')
+    df = pd.read_excel(file_path, engine="openpyxl")
+    return df.to_dict("records")
