@@ -15,6 +15,7 @@ def test_log_to_file(tmp_path):
     assert "add ok" in log_file.read_text()
 
     with pytest.raises(ZeroDivisionError):
+
         @log(filename=str(log_file))
         def div(a, b):
             return a / b
@@ -36,6 +37,7 @@ def test_log_to_console(capsys):
     assert "multiply ok" in captured.out
 
     with pytest.raises(ValueError):
+
         @log()
         def raise_error():
             raise ValueError("test")

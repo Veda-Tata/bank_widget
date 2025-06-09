@@ -1,10 +1,12 @@
 import os
 from typing import Dict
+
 import requests
 
 
 class CurrencyConversionError(Exception):
     """Кастомное исключение для ошибок конвертации валют"""
+
     pass
 
 
@@ -27,23 +29,23 @@ def convert_transaction_to_rub(transaction: Dict) -> float:
         if not isinstance(transaction, dict):
             raise ValueError("Transaction must be a dictionary")
 
-        amount = float(transaction.get('amount', 0))
-        currency = transaction.get('currency', '').upper()
+        amount = float(transaction.get("amount", 0))
+        currency = transaction.get("currency", "").upper()
 
-        if currency == 'RUB':
+        if currency == "RUB":
             return amount
 
         if not currency:
             raise ValueError("Currency not specified in transaction")
 
         # Получаем API ключ из переменных окружения
-        api_key = os.getenv('EXCHANGE_RATE_API_KEY')
+        api_key = os.getenv("EXCHANGE_RATE_API_KEY")
         if not api_key:
-            raise ValueError('API key not found in environment variables')
+            raise ValueError("API key not found in environment variables")
 
         # Запрос курса валют
-        url = f'https://api.apilayer.com/exchangerates_data/latest?base={currency}'
-        headers = {'apikey': api_key}
+        url = f"https://api.apilayer.com/exchangerates_data/latest?base={currency}"
+        headers = {"apikey": api_key}
 
         try:
             response = requests.get(url, headers=headers, timeout=10)
@@ -51,10 +53,10 @@ def convert_transaction_to_rub(transaction: Dict) -> float:
 
             data = response.json()
 
-            if 'rates' not in data or 'RUB' not in data['rates']:
+            if "rates" not in data or "RUB" not in data["rates"]:
                 raise CurrencyConversionError("Invalid API response format")
 
-            rub_rate = data['rates']['RUB']
+            rub_rate = data["rates"]["RUB"]
 
             return amount * rub_rate
 

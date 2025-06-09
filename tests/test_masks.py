@@ -1,6 +1,8 @@
-import pytest
 from pathlib import Path
-from src.masks import mask_card_number, mask_account, masks_logger
+
+import pytest
+
+from src.masks import mask_account, mask_card_number, masks_logger
 
 
 def test_mask_card_number_success():
@@ -46,7 +48,7 @@ def test_log_content():
 
     # Принудительная запись
     for handler in masks_logger.handlers:
-        if hasattr(handler, 'flush'):
+        if hasattr(handler, "flush"):
             handler.flush()
 
     log_file = Path("logs/masks.log")

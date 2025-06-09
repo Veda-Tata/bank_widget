@@ -15,13 +15,16 @@ def sample_transactions():
     ]
 
 
-@pytest.mark.parametrize("state,expected_count,expected_states", [
-    (None, 3, ["EXECUTED"]),
-    ("EXECUTED", 3, ["EXECUTED"]),
-    ("CANCELED", 1, ["CANCELED"]),
-    ("PENDING", 1, ["PENDING"]),
-    ("UNKNOWN", 0, []),
-])
+@pytest.mark.parametrize(
+    "state,expected_count,expected_states",
+    [
+        (None, 3, ["EXECUTED"]),
+        ("EXECUTED", 3, ["EXECUTED"]),
+        ("CANCELED", 1, ["CANCELED"]),
+        ("PENDING", 1, ["PENDING"]),
+        ("UNKNOWN", 0, []),
+    ],
+)
 def test_filter_by_state(sample_transactions, state, expected_count, expected_states):
     """Параметризованный тест фильтрации транзакций по статусу."""
     result = filter_by_state(sample_transactions, state) if state else filter_by_state(sample_transactions)

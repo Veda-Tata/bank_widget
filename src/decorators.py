@@ -22,21 +22,18 @@ def log(filename: Optional[str] = None) -> Callable:
                 result = func(*args, **kwargs)
                 log_message = f"{func_name} ok\n"
                 if filename:
-                    with open(filename, 'a') as f:
+                    with open(filename, "a") as f:
                         f.write(log_message)
                 else:
-                    print(log_message, end='')
+                    print(log_message, end="")
                 return result
             except Exception as e:
-                log_message = (
-                    f"{func_name} error: {type(e).__name__}. "
-                    f"Inputs: {args}, {kwargs}\n"
-                )
+                log_message = f"{func_name} error: {type(e).__name__}. " f"Inputs: {args}, {kwargs}\n"
                 if filename:
-                    with open(filename, 'a') as f:
+                    with open(filename, "a") as f:
                         f.write(log_message)
                 else:
-                    print(log_message, end='')
+                    print(log_message, end="")
                 raise
 
         return wrapper
