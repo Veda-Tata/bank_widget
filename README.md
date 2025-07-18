@@ -18,7 +18,7 @@
 ## Использование
 
 ```python
-from src.masks import masks
+from bank_widget import masks
 
 masked_card = masks.get_mask_card_number("7000792289606361")  # "7000 79** **** 6361"
 masked_account = masks.get_mask_account("73654108430135874305")  # "**4305"
@@ -55,3 +55,10 @@ from src.file_reader import read_csv_transactions, read_excel_transactions
 
 csv_data = read_csv_transactions('transactions.csv')
 excel_data = read_excel_transactions('transactions.xlsx')
+
+
+## Новая функциональность (13.2)
+
+- Добавлена функция `process_bank_search` для поиска транзакций по описанию с использованием регулярных выражений
+- Добавлена функция `process_bank_operations` для подсчёта операций по категориям с использованием Counter
+- Реализован интерактивный интерфейс в main.py
